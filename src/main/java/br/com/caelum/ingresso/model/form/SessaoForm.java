@@ -19,7 +19,7 @@ public class SessaoForm {
 
     public Sessao toSessao(SalaDao salaDao, FilmeDao filmeDao) {
         return new Sessao(salaDao.findOne(salaId),
-                filmeDao.findOne(salaId),
+                filmeDao.findOne(filmeId),
                 horario);
     };
 
