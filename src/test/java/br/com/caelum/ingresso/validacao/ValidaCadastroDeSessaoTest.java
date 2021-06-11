@@ -6,6 +6,7 @@ import br.com.caelum.ingresso.model.Sessao;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -17,8 +18,8 @@ public class ValidaCadastroDeSessaoTest {
     public void naoDeveCadastrarSessaoPoisDaConflitoDeHorario() {
         ValidaCadastroDeSessao validaCadastroDeSessao = new ValidaCadastroDeSessao();
 
-        Sala sala = new Sala("3D");
-        Filme filme = new Filme("Venom", Duration.ofMinutes(120), "acao");
+        Sala sala = new Sala("3D", BigDecimal.TEN);
+        Filme filme = new Filme("Venom", Duration.ofMinutes(120), "acao", BigDecimal.TEN);
         Sessao sessaoDasOnze = new Sessao(sala, filme, LocalTime.parse("11:00"));
         Sessao sessaoDasOito = new Sessao(sala, filme, LocalTime.parse("08:00"));
 
@@ -33,8 +34,8 @@ public class ValidaCadastroDeSessaoTest {
     public void deveCadastraoSessao() {
         ValidaCadastroDeSessao validaCadastroDeSessao = new ValidaCadastroDeSessao();
 
-        Sala sala = new Sala("3D");
-        Filme filme = new Filme("Venom", Duration.ofMinutes(120), "acao");
+        Sala sala = new Sala("3D", BigDecimal.TEN);
+        Filme filme = new Filme("Venom", Duration.ofMinutes(120), "acao", BigDecimal.TEN);
         Sessao sessaoDasOnze = new Sessao(sala, filme, LocalTime.parse("11:00"));
         Sessao sessaoDasOito = new Sessao(sala, filme, LocalTime.parse("08:00"));
 
