@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 public class SessaoForm {
 
-    @NotNull private Integer salaId, filmeId;
+    @NotNull    private Integer salaId, filmeId;
 
     @DateTimeFormat(pattern = "HH:mm")
     @NotNull
