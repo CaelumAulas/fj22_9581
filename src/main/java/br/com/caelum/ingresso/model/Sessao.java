@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalTime;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Sessao {
@@ -54,5 +56,9 @@ public class Sessao {
 
     public LocalTime getHorario() {
         return horario;
+    }
+
+    public Map<String, List<Lugar>> getMapaDeLugares() {
+        return sala.getMapaDeLugares();
     }
 }
