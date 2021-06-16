@@ -5,6 +5,7 @@ import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.imdb.ImagemCapa;
 import br.com.caelum.ingresso.imdb.ImdbCliente;
+import br.com.caelum.ingresso.model.Carrinho;
 import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.TipoDeIngresso;
 import br.com.caelum.ingresso.model.form.SessaoForm;
@@ -27,6 +28,7 @@ public class SessaoController {
     @Autowired private SessaoDao sessaoDao;
     @Autowired private ValidaCadastroDeSessao validaCadastroDeSessao;
     @Autowired private ImdbCliente imdbCliente;
+    @Autowired private Carrinho carrinho;
 
     @GetMapping("/admin/sessao")
     public ModelAndView formularioSessao(@RequestParam("salaId") Integer id, SessaoForm formulario) {
@@ -72,7 +74,8 @@ public class SessaoController {
         view.addObject("sessao", sessao);
         view.addObject("imagemCapa", imagemCapa);
         view.addObject("tiposDeIngressos", TipoDeIngresso.values());
-
+        view.addObject("carrinho", carrinho);
+        System.out.println("total de ingressos seleicionados: " + carrinho.getIngressos().size());
         return view;
     }
 
