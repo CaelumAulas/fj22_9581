@@ -6,6 +6,7 @@ import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.imdb.ImagemCapa;
 import br.com.caelum.ingresso.imdb.ImdbCliente;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 import br.com.caelum.ingresso.model.form.SessaoForm;
 import br.com.caelum.ingresso.validacao.ValidaCadastroDeSessao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,7 @@ public class SessaoController {
 
         view.addObject("sessao", sessao);
         view.addObject("imagemCapa", imagemCapa);
+        view.addObject("tiposDeIngressos", TipoDeIngresso.values());
 
         return view;
     }

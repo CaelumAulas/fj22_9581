@@ -7,4 +7,9 @@ public class Inteira implements Desconto {
     public BigDecimal calculaDesconto(BigDecimal preco) {
         return preco;
     }
+
+    @Override
+    public String getDescricao() {
+        return "Ingresso do tipo inteira";
+    }
 }

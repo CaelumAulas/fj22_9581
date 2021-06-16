@@ -1,9 +1,6 @@
 package br.com.caelum.ingresso.desconto;
 
-import br.com.caelum.ingresso.model.Filme;
-import br.com.caelum.ingresso.model.Ingresso;
-import br.com.caelum.ingresso.model.Sala;
-import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.*;
 import br.com.caelum.ingresso.model.desconto.Inteira;
 import br.com.caelum.ingresso.model.desconto.MeiaEntrada;
 import org.junit.Assert;
@@ -22,7 +19,9 @@ public class TestaValoresDeIngresso {
                 "acao", new BigDecimal("30"));
         Sessao sessaoDasOnze = new Sessao(sala, filme, LocalTime.parse("11:00"));
 
-        Ingresso ingresso = new Ingresso(sessaoDasOnze, new Inteira());
+        Lugar a1 = new Lugar("A", Integer.valueOf(1));
+
+        Ingresso ingresso = new Ingresso(sessaoDasOnze, TipoDeIngresso.INTEIRA, a1);
         Assert.assertEquals(new BigDecimal("42.00"), ingresso.getPreco());
     }
 
@@ -33,7 +32,8 @@ public class TestaValoresDeIngresso {
                 "acao", new BigDecimal("30"));
         Sessao sessaoDasOnze = new Sessao(sala, filme, LocalTime.parse("11:00"));
 
-        Ingresso ingresso = new Ingresso(sessaoDasOnze, new MeiaEntrada());
+        Lugar a1 = new Lugar("A", Integer.valueOf(1));
+        Ingresso ingresso = new Ingresso(sessaoDasOnze, TipoDeIngresso.ESTUDANTE, a1);
         Assert.assertEquals(new BigDecimal("21.00"), ingresso.getPreco());
     }
 }
