@@ -11,4 +11,9 @@ public class MeiaEntrada implements Desconto {
         BigDecimal valorASerDescontado = preco.multiply(porcentagemDeDesconto);
         return preco.subtract(valorASerDescontado).setScale(2, RoundingMode.HALF_UP);
     }
+
+    @Override
+    public String getDescricao() {
+        return "Meia Entrada";
+    }
 }

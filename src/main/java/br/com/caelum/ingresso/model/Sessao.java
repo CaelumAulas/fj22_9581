@@ -4,8 +4,11 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Sessao {
@@ -19,6 +22,9 @@ public class Sessao {
 
     @ManyToOne
     private Filme filme;
+
+    @OneToMany(mappedBy = "sessao", fetch = FetchType.EAGER)
+    private Set<Ingresso> ingressos = new HashSet<>();
 
     private LocalTime horario;
 
@@ -61,4 +67,24 @@ public class Sessao {
     public Map<String, List<Lugar>> getMapaDeLugares() {
         return sala.getMapaDeLugares();
     }
+
+    public Set<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
+    public void setIngressos(Set<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
+
+    public boolean isDisponivel(Lugar selecionado) {
+//        List<Lugar> lugaresVendidos = ingressos.stream().map(Ingresso::getLugar).collect(Collectors.toList());
+//        return lugaresVendidos.stream().noneMatch(ingresso -> ingresso.equals(selecionado));
+
+        return ingressos.stream()
+                .map(Ingresso::getLugar) // lista de lugares
+                .noneMatch(ingresso -> ingresso.equals(selecionado)); // o lugar selecionado não deve existir na lista
+
+
+    }
+
 }
