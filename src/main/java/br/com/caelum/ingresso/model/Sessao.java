@@ -48,6 +48,9 @@ public class Sessao {
         return preco.setScale(2, RoundingMode.HALF_UP);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }
