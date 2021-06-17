@@ -23,4 +23,10 @@ public class Carrinho {
     public void setIngressos(List<Ingresso> ingressos) {
         this.ingressos = ingressos;
     }
+
+    public boolean isSelecionado(Lugar lugar) {
+        return ingressos.stream() // lista de ingresso -> transforme
+                .map(Ingresso::getLugar)  //lista de lugares
+                .anyMatch(lugarSelecionado -> lugarSelecionado.equals(lugar)); // o lugar que recebmos existe na lista de lugares selecionados
+    }
 }
